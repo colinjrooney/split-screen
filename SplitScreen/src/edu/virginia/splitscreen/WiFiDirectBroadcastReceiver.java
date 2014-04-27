@@ -18,8 +18,6 @@ public class WiFiDirectBroadcastReceiver  extends BroadcastReceiver{
 	private WifiP2pManager mManager;
 	private Channel mChannel;
 	private MainActivity mActivity;
-	private WifiP2pDeviceList devices;
-	
 	private List peers = new ArrayList<WifiP2pDevice>();
 	
 	private PeerListListener mPeerListListener = new PeerListListener(){
@@ -57,7 +55,6 @@ public class WiFiDirectBroadcastReceiver  extends BroadcastReceiver{
 		} else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)){
 			// call requestpeers() here to get current peers
 			refresh();
-			
 		} else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)){
 			// respond to new connection/disconnections
 		} else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)){
@@ -66,23 +63,16 @@ public class WiFiDirectBroadcastReceiver  extends BroadcastReceiver{
 	}
 	public void refresh()
 	{
-//		Log.i("Splitscreen", "P2P PEERS CHANGED");
-		if(mManager != null){
+		if(mManager != null)
+		{
 			mManager.requestPeers(mChannel, mPeerListListener);
-			String devices = "";
 			WifiP2pDevice curDevice;
-			mActivity.values.clear();
-			for(int i = 0; i < peers.size(); i++){
+			mActivity.listOfP2pDevices.clear();
+			for(int i = 0; i < peers.size(); i++)
+			{
 				curDevice = (WifiP2pDevice) (peers.get(i));
-				devices = curDevice.deviceAddress;
-//				Log.d("Splitscreen",devices);
-				//mActivity.values.add(devices);
-				mActivity.devices.add(curDevice);
-				mActivity.refreshListView(devices);
-				//mActivity.deviceList.setAdapter(mActivity.adapter);
+				mActivity.listOfP2pDevices.add(curDevice);
 			}
 		}
 	}
-	
-	
 }

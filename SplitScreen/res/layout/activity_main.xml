@@ -7,32 +7,33 @@
     tools:context="edu.virginia.splitscreen.MainActivity"
     tools:ignore="MergeRootFrame" >
 
-    <TextView
-        android:id="@+id/deviceName"
+    <Button
+        android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" />
-
-    <ListView
-        android:id="@+id/devices"
-        android:layout_width="match_parent"
-        android:layout_height="399dp" >
-
-    </ListView>
+        android:text="Host" 
+        android:onClick="onButtonHost"/>
 
     <Button
-        android:id="@+id/ServerButton"
+        android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Server"
-        android:onClick="connect" />
-    
+        android:text="Receive" 
+        android:onClick="onButtonReceive"/>
+
     <Button
-        android:id="@+id/ClientButton"
+        android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Client"
-        android:onClick="clientListen" />
+        android:text="Setup Host" 
+        android:onClick="onButtonSetup"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Receive" 
+        android:onClick="onButtonSetupR"/>
 
 </LinearLayout>
 
